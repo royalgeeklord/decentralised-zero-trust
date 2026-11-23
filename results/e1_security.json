@@ -1,0 +1,82 @@
+[
+ {
+  "id": "T1",
+  "test": "Legitimate camera to recorder",
+  "expected": "ALLOW",
+  "observed": "ALLOW",
+  "passed": true,
+  "detail": ""
+ },
+ {
+  "id": "T2",
+  "test": "Legitimate PC to NAS share",
+  "expected": "ALLOW",
+  "observed": "ALLOW",
+  "passed": true,
+  "detail": ""
+ },
+ {
+  "id": "T3",
+  "test": "Compromised camera requests SMB",
+  "expected": "DENY + alert; quarantine after 3",
+  "observed": "['POLICY', 'POLICY', 'POLICY']; alerts=4; quarantined=True; later video=QUARANTINED",
+  "passed": true,
+  "detail": ""
+ },
+ {
+  "id": "T4",
+  "test": "Persistent firmware implant",
+  "expected": "ATTEST_FAIL + quarantine",
+  "observed": "ATTEST_FAIL; quarantined=True",
+  "passed": true,
+  "detail": ""
+ },
+ {
+  "id": "T5",
+  "test": "Replay of captured evidence",
+  "expected": "reject (nonce mismatch)",
+  "observed": "ATTEST_FAIL",
+  "passed": true,
+  "detail": ""
+ },
+ {
+  "id": "T6",
+  "test": "Cloned device (different hardware secret)",
+  "expected": "reject",
+  "observed": "ATTEST_FAIL",
+  "passed": true,
+  "detail": "side effect: legitimate device quarantined"
+ },
+ {
+  "id": "T7",
+  "test": "Forged or re-targeted token",
+  "expected": "reject both",
+  "observed": "BAD_TOKEN, BAD_TOKEN",
+  "passed": true,
+  "detail": ""
+ },
+ {
+  "id": "T8",
+  "test": "Edit a DENY record to ALLOW",
+  "expected": "chain break detected",
+  "observed": "valid=False at seq 6",
+  "passed": true,
+  "detail": ""
+ },
+ {
+  "id": "T9",
+  "test": "Rewrite history with re-computed hashes",
+  "expected": "witness mismatch detected",
+  "observed": "valid=True, witness_match=False",
+  "passed": true,
+  "detail": ""
+ },
+ {
+  "id": "T10",
+  "test": "Heating controller lock and recovery",
+  "expected": "detect, re-provision, restore",
+  "observed": "lock=LOCKED: pay 0.5 BTC; heartbeat=ATTEST_FAIL; after=ALLOW; command=ok",
+  "passed": true,
+  "detail": ""
+ }
+]

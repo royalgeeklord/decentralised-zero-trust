@@ -1,0 +1,30 @@
+[
+ {
+  "concurrency": 1,
+  "sessions": 600,
+  "sessions_per_s": 621.6,
+  "p50_ms": 1.56,
+  "p95_ms": 1.98
+ },
+ {
+  "concurrency": 4,
+  "sessions": 600,
+  "sessions_per_s": 1081.8,
+  "p50_ms": 3.13,
+  "p95_ms": 5.38
+ },
+ {
+  "concurrency": 16,
+  "sessions": 592,
+  "sessions_per_s": 1076.2,
+  "p50_ms": 12.0,
+  "p95_ms": 26.11
+ },
+ {
+  "concurrency": 32,
+  "sessions": 576,
+  "sessions_per_s": 888.8,
+  "p50_ms": 25.56,
+  "p95_ms": 54.07
+ }
+]
